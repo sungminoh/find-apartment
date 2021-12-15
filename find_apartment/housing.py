@@ -102,7 +102,7 @@ class Apartment:
 
 
 class Yelp:
-    my_location = [0, 0]
+    my_location = [37.405494, -122.064795]
     base_url = 'https://www.yelp.com/search_suggest/v2/prefetch?lat={lat}&lng={lon}&is_new_loc=false&prefix={query}&is_initial_prefetch='
     headers = {
         'Host': 'www.yelp.com',
@@ -200,9 +200,13 @@ def to_html(posts):
     return '\n'.join(ret)
 
 
-if __name__ == '__main__':
+def main():
     url = sys.argv[1]
     fname = sys.argv[2]
     with open(fname, 'w') as f:
         f.write(to_html(crawl(url)))
     webbrowser.open_new_tab('file://' + os.path.realpath(fname))
+
+
+if __name__ == '__main__':
+    main()
